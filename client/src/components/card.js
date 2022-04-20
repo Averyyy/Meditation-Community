@@ -1,5 +1,5 @@
 import React from 'react'
-import { Xt } from 'xtendui'
+// import { Xt } from 'xtendui'
 import 'xtendui/src/toggle'
 
 export default function Card({props, env}) {
