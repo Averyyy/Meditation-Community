@@ -28,7 +28,7 @@ export default function Blog({environment}) {
     </a>
     <div className="absolute top-36">
     {blogs.map((blog, index) => (
-    <div key={index} className="inline-block justify-center">
+    <div key={index.toString()} className="inline-block justify-center">
     <Card props={blog} env={environment}/>
     </div>))}
     </div>
