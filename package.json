@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/nyu-csci-ua-0467-001-002-spring-2022/final-project-Averyyy#readme",
   "dependencies": {
-    "concurrently": "^7.1.0"
+    "concurrently": "^7.1.0",
+    "dotenv": "^16.0.0"
   }
 }

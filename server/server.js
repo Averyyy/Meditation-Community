@@ -1,5 +1,6 @@
 require('./db');
 require('./auth');
+require("dotenv").config();
 
 const passport = require('passport');
 const express = require('express');
@@ -28,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(
   cors({
-    origin: "http://ec2-13-58-19-24.us-east-2.compute.amazonaws.com:3000", // <-- location of the react app were connecting to
+    origin: process.env.REACT_APP_SERVER, // <-- location of the react app were connecting to
     credentials: true,
   })
 );
