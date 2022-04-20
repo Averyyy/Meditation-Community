@@ -1,0 +1,26 @@
+{
+  "name": "meditation-community",
+  "version": "1.0.1",
+  "description": "a community for meditation",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "server": "nodemon server server.js",
+    "client": "npm start --prefix client",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nyu-csci-ua-0467-001-002-spring-2022/final-project-Averyyy.git"
+  },
+  "author": "Avery (Hangkai Qian)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nyu-csci-ua-0467-001-002-spring-2022/final-project-Averyyy/issues"
+  },
+  "homepage": "https://github.com/nyu-csci-ua-0467-001-002-spring-2022/final-project-Averyyy#readme",
+  "dependencies": {
+    "concurrently": "^7.1.0"
+  }
+}
