@@ -8,7 +8,7 @@ const path = require('path');
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 
 const routes = require('./routes/login_regi');
 
@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(
   cors({
-    origin: process.env.REACT_APP_SERVER, // <-- location of the react app were connecting to
+    origin: process.env.REACT_APP, // <-- location of the react app were connecting to
     credentials: true,
   })
 );
@@ -38,6 +38,7 @@ app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
 // require('./passportConfig')(passport);
+// console.log(process.env.REACT_APP);
 
 app.use('/', routes);
 app.use('/api', require('./routes/api'));

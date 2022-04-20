@@ -27,8 +27,8 @@ export default function Blog({environment}) {
     Create Your Blog!
     </a>
     <div className="absolute top-36">
-    {blogs.map(blog => (
-    <div className="inline-block justify-center">
+    {blogs.map((blog, index) => (
+    <div key={index} className="inline-block justify-center">
     <Card props={blog} env={environment}/>
     </div>))}
     </div>
