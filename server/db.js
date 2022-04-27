@@ -8,7 +8,9 @@ const User = new mongoose.Schema({
   salt: {type:String, required: true},
   hash: {type: String, required: true},
   scores:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'score' }],
-  blogs:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'blo' }]
+  blogs:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'blo' }],
+  replies:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'reply' }]
+  
 });
 
 const score = new mongoose.Schema({
@@ -23,9 +25,19 @@ const blo = new mongoose.Schema({
   username: {type:String, required: true},
 	time: {type: String,  required: true},
 	title: {type: String,  required: true},
-	content: {type:String, required:true}
+	content: {type:String, required:true},
+  replies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'reply' }]
 }, {
 	_id: true
+});
+
+const reply = new mongoose.Schema({
+  username: {type:String, required: true},
+  time: {type: String,  required: true},
+  blogto: {type: mongoose.Schema.Types.ObjectId, ref: 'blo'},
+  content: {type:String, required:true}
+}, {
+  _id: true
 });
 
 
@@ -49,6 +61,7 @@ mongoose.model('blo',blo);
 // mongoose.model('Blogs', Blogs);
 // mongoose.model('Scores', Scores);
 mongoose.model('score', score);
+mongoose.model('reply', reply);
 
 
 const connect = mongoose.connect(url, {

@@ -1,6 +1,5 @@
 require('./db');
 require('./auth');
-require("dotenv").config();
 
 const passport = require('passport');
 const express = require('express');
@@ -26,26 +25,31 @@ app.use(session(sessionOptions));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 
 app.use(
-  cors({
-    origin: process.env.REACT_APP, // <-- location of the react app were connecting to
-    credentials: true,
-  })
+  cors()
 );
+
+// {
+//   origin: "http://localhost:3000", // <-- location of the react app were connecting to
+//   credentials: true,
+// }
 app.use(cookieParser("secretcode"));
 // passport setup
 app.use(passport.initialize());
 app.use(passport.session());
 // require('./passportConfig')(passport);
-// console.log(process.env.REACT_APP);
 
 app.use('/', routes);
 app.use('/api', require('./routes/api'));
 
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname,'..','client','build','index.html'));
+});
+
 const port = process.env.PORT || '4000';
 app.listen(port, () => console.log(`Server started on Port ${port}`));
-// app.listen(port, '3.21.204.174', () => console.log(`Server started on Port ${port}`));
 
 
 

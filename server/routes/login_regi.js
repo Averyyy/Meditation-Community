@@ -13,7 +13,7 @@ router.post('/login', (req, res, next) => {
             res.send({token: true, username: user.username});
           });
         } else {
-          res.send({token: false, message: err.message})
+          res.send({token: false, message: 'Invalid username or password'});
           console.log(req.user);
         }
       })(req, res, next);

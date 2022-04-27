@@ -1,7 +1,5 @@
-import logo from './logo.svg';
-import axios from 'axios';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link }  from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route }  from "react-router-dom";
 import NavBar from './components/navbar';
 import Home from './routers/home';
 import Medi from './routers/medi';
@@ -10,7 +8,8 @@ import Blog from './routers/blog';
 import Auth from './routers/autha';
 import Blogcreate from './routers/blogcreate';
 import About from './routers/about';
-import { useState, useEffect } from 'react';
+import Blogview from './routers/blogview';
+import { useState } from 'react';
 
 
 
@@ -24,17 +23,22 @@ return (
   <>
 
     <Router>
-      <div>
+    <div className='z-50'> 
         <NavBar />
+      </div>
+      <div>
         <Routes>
+          <Route path="*" element={<div>404</div>}/>
           <Route path="/scores" element={<Score environment={env} />}/>
           <Route path="/medi" element={<Medi environment={env}/>}/>
           <Route path="/blog" element={<Blog environment={env}/>}/>
           <Route path="/blogcreate" element={<Blogcreate environment={env}/>}/>
           <Route path='/about' element={<About/>}/>
           <Route path="/" element={<Home />}/>
+          <Route path="/blog/:blogid" element={<Blogview environment={env}/>}/>
         </Routes>
       </div>
+
      </Router>
      
     </>

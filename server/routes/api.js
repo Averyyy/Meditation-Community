@@ -5,6 +5,7 @@ const User = mongoose.model('User');
 // const Scores = mongoose.model('Scores');
 const score = mongoose.model('score');
 const blo = mongoose.model('blo');
+const reply = mongoose.model('reply');
 
 
 const router = express.Router();
@@ -60,7 +61,7 @@ router.get('/blogs', async (req, res) => {
     const getdata = await blo.find({});
     const senddata = []
     for (let i = 0; i < getdata.length; i++) {
-        senddata.push({title: getdata[i].title, content: getdata[i].content, username: getdata[i].username, time: getdata[i].time});
+        senddata.push({title: getdata[i].title, content: getdata[i].content, username: getdata[i].username, time: getdata[i].time, id: getdata[i]._id});
     }
     res.json(senddata);
 });
@@ -74,6 +75,29 @@ router.post('/blogs', async (req, res) => {
     user.blogs.push(newBlog);
     await user.save();
     res.send({success: true});
+});
+
+router.get('/blogs/:id', async (req, res) => {
+    const {id} = req.params;
+    const getdata = await blo.find({_id: id});
+    const replylist = await reply.find({blogto: id});
+    const senddata = {title: getdata[0].title, content: getdata[0].content, username: getdata[0].username, time: getdata[0].time, id: getdata[0]._id, replies: replylist};
+    res.json(senddata);
+});
+
+router.post('/blogs/:id', async (req, res) => {
+    const {id} = req.params;
+    const {username, content} = req.body;
+    const now = Date(Date.now()).toString();
+    const blogto = await blo.find({_id: id});
+    const newReply = new reply({username: username, content: content, time: now, blogto: blogto[0]._id});
+    await newReply.save();
+    const blog = await blo.findOne({_id: id});
+    blog.replies.push(newReply);
+    await blog.save();
+    const replylist = await reply.find({blogto: id});
+    const sendBlog = {title: blog.title, content: blog.content, username: blog.username, time: blog.time, id: blog._id, replies: replylist};
+    res.json(sendBlog);
 });
 
 

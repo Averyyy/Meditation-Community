@@ -12,7 +12,9 @@ export default function Score({ environment }) {
   }, []);
 
   return (<>
-    <table className="absolute left-1/2 top-32 table-auto text-center transform -translate-x-1/2
+    <div className='absolute left-12 top-20 font-bold text-4xl'>Scoreboard</div>
+    <div className='absolute left-12 top-32 font-thin text-normal'>One person will show up once by his/her highest score</div>
+    <table className="absolute left-1/2 top-36 table-auto text-center transform -translate-x-1/2
     my-4 xt-my-auto w-full">
   <thead>
     <tr>
@@ -32,6 +34,9 @@ export default function Score({ environment }) {
     ))}
   </tbody>
 </table>
+<div className="bg"></div>
+<div className="bg bg2"></div>
+<div className="bg bg3"></div>
 </>
   )
 }

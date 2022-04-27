@@ -4,8 +4,12 @@ module.exports = {
     './node_modules/xtendui/src/*.mjs'
   ],
   theme: {
-    extend: {},
-  },
+    extend: {
+      fontFamily: {
+       PTSans: ["PT Sans", "sans-serif"],
+      },
+    },
+  }, 
   plugins: [],
   presets: [
     require('tailwindcss/defaultConfig'), require('xtendui/tailwind.preset'),

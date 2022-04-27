@@ -18,13 +18,13 @@ export default function Blogcreate({ environment }) {
     }
   return (
       <>
-      <form className="text-sm">
+      <form className="text-sm px-7">
         <div className="xt-row xt-row-x-6 xt-row-y-4">
-          <div className="w-full">
+          <div className="w-1/2">
             <label className="block mb-3 font-medium text-gray-700"> Title </label>
             <input
               type="text"
-              className="block w-full rounded-md py-2.5 px-3.5 text-gray-900 placeholder-black placeholder-opacity-75 bg-gray-100 transition focus:bg-gray-200 focus:outline-none"
+              className="block w-2/3 rounded-md py-2.5 px-3.5 text-gray-900 placeholder-black placeholder-opacity-75 bg-gray-100 transition focus:bg-gray-200 focus:outline-none"
               aria-label="Title"
               placeholder="Title"
               id='title'

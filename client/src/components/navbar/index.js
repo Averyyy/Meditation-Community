@@ -1,8 +1,9 @@
 /* This example requires Tailwind CSS v2.0+ */
 // import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { Disclosure, Menu } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import axios from 'axios'
+
 
 
 const user = {
@@ -46,7 +47,7 @@ export default function NavBar() {
   return (
     <>
       <div className="min-h-full z-50">
-        <Disclosure as="nav" className="bg-gray-800">
+        <Disclosure as="nav" className="bg-gray-800 z-50">
           {({ open }) => (
             <>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,7 +93,7 @@ export default function NavBar() {
                       </button>
 
                       {/* Profile dropdown */}
-                      <Menu as="div" className="ml-3 relative">
+                      <Menu as="div" className="ml-3 relative z-50">
                         
                         <div>
                           <Menu.Button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
@@ -101,7 +102,7 @@ export default function NavBar() {
                           </Menu.Button>
                         </div>
                         {/* <Transition
-                          as={Fragment}
+                          // as={Fragment}
                           enter="transition ease-out duration-100"
                           enterFrom="transform opacity-0 scale-95"
                           enterTo="transform opacity-100 scale-100"
@@ -143,9 +144,9 @@ export default function NavBar() {
                   </div>
                 </div>
               </div>
-
-              <Disclosure.Panel className="md:hidden">
-                <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              {/* // Mobile menu, show/hide based on "open" prop */}
+              <Disclosure.Panel as='div' className="panel">
+                <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 ">
                   {navigation.map((item) => (
                     <Disclosure.Button
                       key={item.name}
@@ -153,7 +154,7 @@ export default function NavBar() {
                       href={item.href}
                       className={classNames(
                         item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                        'block px-3 py-2 rounded-md text-base font-medium'
+                        'block px-3 py-2 rounded-md text-base font-medium z-40'
                       )}
                       aria-current={item.current ? 'page' : undefined}
                     >
@@ -178,13 +179,13 @@ export default function NavBar() {
                       <BellIcon className="h-6 w-6" aria-hidden="true" />
                     </button>
                   </div>
-                  <div className="mt-3 px-2 space-y-1">
+                  <div className="mt-3 px-2 space-y-1 z-50">
                     {userNavigation.map((item) => (
                       <Disclosure.Button
                         key={item.name}
                         as="a"
                         href={item.href}
-                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
+                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 "
                       >
                         {item.name}
                       </Disclosure.Button>
