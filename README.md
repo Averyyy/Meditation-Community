@@ -117,7 +117,7 @@ past: [
 
   
 
-![home](documentation/home.jpg)
+![home](documentation/1.jpg)
 
   
 
@@ -125,7 +125,7 @@ past: [
 
   
 
-![meditation](documentation/medi.jpg)
+![meditation](documentation/2.jpg)
 
   
 
@@ -133,21 +133,20 @@ past: [
 
   
 
-![scoreboard](documentation/board.jpg)
+![scoreboard](documentation/3.jpg)
 
 /social/forum - page for articles and blogs
 
 
-![forum1](documentation/forum.jpg)
-![forum2](documentation/forum2.jpg)
+![forum1](documentation/4.jpg)
 
-/about/log - page for update log and advices
+<!-- /about/log - page for update log and advices
 
 ![about](documentation/about.jpg)
 
 -login page is integrated on every page
 
-![login](documentation/login.jpg)
+![login](documentation/login.jpg) -->
 
 
   
